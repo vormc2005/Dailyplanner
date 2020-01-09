@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="style.css" href="style.css">
+
+    <title>Document</title>
+</head>
+<body>
+
+
+    <!-- Create Jumbotron header -->
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+          <h1 class="display-4">Fluid jumbotron</h1>
+          <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+        </div>
+      </div>
+
+      <!-- Create container with dayly notes -->
+
+    <div class=container>
+
+        <div class="row">
+     <!-- Create time array -->
+            <div id="col-2">
+            <div id="timeslot"></div>
+        </div>
+        <!-- create input area -->
+            <div class="col-8">
+                <div id=notes-save class="notes"></div>
+        </div>
+        <!-- create save button -->
+
+            <div class="col-2"></div>
+             <div id="savebutton"></div>
+         </div>
+    </div>  
+        
+
+      </div  >
+   
+    
+<!-- ----------------------------------- -->
+      <!-- Javascript and jquery -->
+      
+      <script type="text/javascript">
+
+
+$(document).ready(function () {
+
+    var timearr = ["9AM", "10AM","11AM","12PM","1PM","2PM","3PM","4PM","5PM"];
+    
+    var inputline;
+
+    var save;
+// ---------create time--------------///
+
+   $.each(timearr, function(index,value){
+       $("#timeslot").append(value + '<br>');
+
+      console.log("#timeslot")
+ 
+   
+    });
+   //  need to create text area intead of input area----------?
+   $("#notes-save").append('<textarea rows"8" col "4"/>');
+
+$("notes-save").attr("width","600px");
+
+ var savebtn = $("<button>");
+    savebtn.text("Save");
+$("#savebutton").append(savebtn);
+// ----------------------------------------//
+});
+
+</script>
+
+</body>
+</html>
