@@ -1,4 +1,37 @@
-#notes-save{
+.display-4{
+    text-align: center;
+    font-weight: bold;
+}
+.lead{
+    text-align: center;
+    padding: 5px;
+}
+.currentTime{
+    font-weight: bolder;
+    padding: 5px;
+    font-size: 24px;
+    text-align: center;
+    border-bottom: solid 1px grey;
+    
+    padding-bottom: 20px;
+    margin-top:-20px;
+}
 
-    width: auto;
+
+.form-control{
+
+    background-color: #dedede;
+}
+
+/* Red mode for text area */
+
+.red{
+    background-color: red;
+    color: white;
+
+}
+/* Grey mode */
+.grey {
+background-color: #dedede;
+color: black;
 }

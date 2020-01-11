@@ -5,12 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-
+   
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <link rel="style.css" href="style.css">
-
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script type = "text/JavaScript" src = "https://MomentJS.com/downloads/moment.js"></script>
+    
     <title>Document</title>
+    
 </head>
 <body>
 
@@ -18,12 +20,14 @@
     <!-- Create Jumbotron header -->
     <div class="jumbotron jumbotron-fluid">
         <div class="container">
-          <h1 class="display-4">Fluid jumbotron</h1>
-          <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+          <h1 class="display-4">Work Day Scheduler</h1>
+          <p class="lead">Please type your schedule in text fields</p>
         </div>
       </div>
 
       <!-- Create container with dayly notes -->
+
+      <div id="clock" class="currentTime">...</div>
 
     <div class="container" id="calendar"></div>
    
@@ -32,11 +36,39 @@
       <!-- Javascript and jquery -->
       
     <script type="text/javascript">
-        $(document).ready(function () {
+// ----------time now function--------------------//
 
-            var timearr = ["9AM", "10AM","11AM","12PM","1PM","2PM","3PM","4PM","5PM"];
-            var inputline; 
-            var save;
+
+            let rendertime = function(){
+                var timeNow = new Date();
+                timeNow.addClass
+                var hour = timeNow.getHours();
+                var minutes = timeNow.getMinutes();
+                var seconds = timeNow.getSeconds();
+            
+                var time = ((hour>12)?hour-12 : hour)
+                time+= ((minutes<10)?":0":":"+minutes)
+                time+=(hour>=12)?"PM":"AM"
+            
+                console.log(time)
+      
+
+               document.getElementById("clock").innerText= time;
+               document.getElementById("clock").textContent=time;
+            }
+
+            rendertime();
+
+           
+/// --------------------------------------------------------////
+               
+
+        $(document).ready(function () {
+            
+            
+            var timearr = ["9AM", "10AM","11AM","12PM","1PM","2PM","3PM","4PM","5PM"];              
+
+            
 
             var buildCalendar = function(){
                 $.each(timearr, function(index,value){
@@ -52,9 +84,10 @@
                     var txtarea = $("<textarea>");
                     txtarea.addClass("form-control");
                     txtarea.attr("data-time", value);
+                    txtarea.attr("id", value);
                     // TODO: Populate texarea with whatever is in local storage
-
-
+                   
+                    
                     textCol.append(txtarea);
 
                     var saveCol = $("<div>");
@@ -72,24 +105,39 @@
                     $("#calendar").append(row);
                 });
             }
-
+// ===============save item??????????????=============///
             var saveItem = function(timeSlot){
                 // TODO: Get the textarea value for whatever timeslot is being saved
+                console.log(timeSlot);
+               var savetext = document.getElementById(timeSlot).value;
+            //    var savetext = document.querySelector("data-time" + timeSlot).value;
+                console.log(savetext);
 
+               localStorage.setItem(timeSlot, JSON.stringify(savetext));
+
+               console.log(localStorage);
+// =====================================================
             }
 
             $("#calendar").on("click", ".save-item", function(e){
                 e.preventDefault();
                 console.log("save: " + $(this).attr("data-time"));
                 saveItem($(this).attr("data-time"));
+                
             });
 
-            // TODO: Grab any data from local storage and assign to global variable
-
+            
+            var colors = function(){
+                
+            }
+            
             // Build the calendar
+           
             buildCalendar();
+
         });
 
+        
     </script>
 
 </body>
