@@ -11,7 +11,7 @@
     padding: 5px;
     font-size: 24px;
     text-align: center;
-    border-bottom: solid 1px grey;
+    /* border-bottom: solid 1px grey; */
     
     padding-bottom: 20px;
     margin-top:-20px;
@@ -34,4 +34,14 @@
 .grey {
 background-color: #dedede;
 color: black;
+}
+.save-item{
+    width: 100%;
+    padding: 15px;
+    margin-top: 3px;
+   
+}
+.row{
+    border: solid 1px grey;
+    border-radius: 5px;
 }

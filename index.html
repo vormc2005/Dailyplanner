@@ -47,8 +47,8 @@
                 var seconds = timeNow.getSeconds();
             
                 var time = ((hour>12)?hour-12 : hour)
-                time+= ((minutes<10)?":0":":"+minutes)
-                time+=(hour>=12)?"PM":"AM"
+                time+= ((minutes<10)?":0":" : " + minutes)
+                time+=(hour>=12)?"  PM":"  AM"
             
                 console.log(time)
       
@@ -86,7 +86,7 @@
                     txtarea.attr("data-time", value);
                     txtarea.attr("id", value);
                     // TODO: Populate texarea with whatever is in local storage
-                   
+                                
                     
                     textCol.append(txtarea);
 
@@ -103,6 +103,27 @@
                     row.append(saveCol);
 
                     $("#calendar").append(row);
+
+
+// /--------------not working code = to change colors////////////
+                    var colors = function(){
+                if (hour === "data-time"){
+                    mode = "red";
+                    form-control.setAttribute("class", red);
+
+                 }
+                 else{
+                     mode = "grey";
+                     form-contol.setAttribute("class", grey)
+                    console.log(colors)
+                 }
+                
+            }
+            console.log(colors)
+
+// ////////////////////////////////////////////////////////////////////////////
+
+        
                 });
             }
 // ===============save item??????????????=============///
@@ -125,14 +146,20 @@
                 saveItem($(this).attr("data-time"));
                 
             });
-
-            
-            var colors = function(){
-                
+// 
+// //////////////////////////Not working function////////////////////
+// 
+            // to do retrieve info from local storage
+                var retrieve = function(){
+                var lastnotes =  JSON.parse(localStorage.getItem(""));
+                // document.getElementById()=lastnotes;
+                    console.log(lastnotes)
             }
+         //////////////////////////////////////////////////////////
             
             // Build the calendar
            
+          
             buildCalendar();
 
         });
