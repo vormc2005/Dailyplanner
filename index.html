@@ -59,6 +59,26 @@
 
             rendertime();
 
+
+
+            // /--------------not working code = to change colors////////////
+            // var colors = function(){
+            //     if (hour === "data-time"){
+            //         mode = "red";
+            //         form-control.setAttribute("class", red);
+
+            //      }
+            //      else{
+            //          mode = "grey";
+            //          form-contol.setAttribute("class", grey)
+            //         console.log(colors)
+            //      }
+                
+            // }
+            // console.log(colors)
+
+// ////////////////////////////////////////////////////////////////////////////
+
            
 /// --------------------------------------------------------////
                
@@ -86,8 +106,19 @@
                     txtarea.attr("data-time", value);
                     txtarea.attr("id", value);
                     // TODO: Populate texarea with whatever is in local storage
-                                
-                    
+
+                    var lastnotes =  JSON.parse(localStorage.getItem(timearr[index]));
+                    if(timearr[index] !== null){
+                        
+       // -----------------Need to attach text to text area---------------/////
+                        console.log(lastnotes)    
+                    }else{
+                        buildCalendar();
+
+                    }
+
+                         
+                    // ////////////////////////////////////////////////////////
                     textCol.append(txtarea);
 
                     var saveCol = $("<div>");
@@ -105,23 +136,6 @@
                     $("#calendar").append(row);
 
 
-// /--------------not working code = to change colors////////////
-                    var colors = function(){
-                if (hour === "data-time"){
-                    mode = "red";
-                    form-control.setAttribute("class", red);
-
-                 }
-                 else{
-                     mode = "grey";
-                     form-contol.setAttribute("class", grey)
-                    console.log(colors)
-                 }
-                
-            }
-            console.log(colors)
-
-// ////////////////////////////////////////////////////////////////////////////
 
         
                 });
@@ -150,11 +164,20 @@
 // //////////////////////////Not working function////////////////////
 // 
             // to do retrieve info from local storage
-                var retrieve = function(){
-                var lastnotes =  JSON.parse(localStorage.getItem(""));
-                // document.getElementById()=lastnotes;
-                    console.log(lastnotes)
-            }
+
+//             $.each(timearr, function(index,value){                
+//                 var lastnotes =  JSON.parse(localStorage.getItem(timearr[index]));
+
+//                  console.log(lastnotes)
+// // Need to append to text area???? 
+//                $("#data-time").append(lastnotes);
+              
+            
+            // });
+          
+           
+            
+          
          //////////////////////////////////////////////////////////
             
             // Build the calendar
