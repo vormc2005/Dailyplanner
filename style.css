@@ -2,6 +2,9 @@
     text-align: center;
     font-weight: bold;
 }
+#calendar{
+    margin-bottom: 20px;
+}
 .lead{
     text-align: center;
     padding: 5px;
@@ -40,8 +43,12 @@ color: black;
     padding: 15px;
     margin-top: 3px;
    
+   
 }
 .row{
     border: solid 1px grey;
     border-radius: 5px;
+}
+.green{
+    background-color: green;
 }
