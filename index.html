@@ -38,85 +38,69 @@
     <!-- Javascript and jquery -->
 
     <script type="text/javascript">
-        // ----------time now function--------------------//
-
-
-
-
-        // let rendertime = function(){
-        var timeNow = moment().format('MMMM Do YYYY, h:mm:ss a');
-
-        var time = $("<h3>");
-        time.text(timeNow);
-        $(".currentTime").append(time);
 
 
 
 
 
 
-        // /--------------not working code = to change colors////////////
-        // var colors = function(){
-        //     if (hour === "data-time"){
-        //         mode = "red";
-        //         form-control.setAttribute("class", red);
-
-        //      }
-        //      else{
-        //          mode = "grey";
-        //          form-contol.setAttribute("class", grey)
-        //         console.log(colors)
-        //      }
-
-        // }
-        // console.log(colors)
-
-        // ////////////////////////////////////////////////////////////////////////////
 
 
-        /// --------------------------------------------------------////
 
 
         $(document).ready(function () {
+
+            // ----------time now function--------------------//
+           
+            var timeNow = moment().format('MMMM Do YYYY, h:mm:ss a');
+
+            var time = $("<h3>");
+            time.text(timeNow);
+            $(".currentTime").append(time);
 
 
 
             // Creating rows for eash time//////////
             var timearr = ["9am", "10am", "11am", "12pm", "1pm", "2pm", "3pm", "4pm", "5pm"];
-
+                var timearrmil=[9, 10,11,12,13,14,15,16,17];
 
 
             var buildCalendar = function () {
-                $.each(timearr, function (index, value) {
+                $.each(timearrmil, function (index, value) {
                     // create row
+                    var displayTime = timearr[index];
                     var row = $("<div>").addClass("row");
 
                     // Create columns
                     var timeCol = $("<div>");
-         // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!//
-                    timeCol.addClass("col-2 timeslot").text(value);
+                    // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!//
+                    timeCol.addClass("col-2 timeslot").text(displayTime);
                     var textCol = $("<div>");
                     textCol.addClass("col-8 textarea");
                     var txtarea = $("<textarea>");
                     txtarea.addClass("form-control");
-        // Assigning time value to a row of text//////
+                    // Assigning time value to a row of text//////
                     txtarea.attr("data-time", value);
                     txtarea.attr("id", value);
-         // TODO: Populate texarea with whatever is in local storage//////
+                    // TODO: Populate texarea with whatever is in local storage//////
                     if (localStorage.getItem(value)) {
                         var Note = JSON.parse(localStorage.getItem(value));
                         txtarea.text(Note);
                     }
-                // change colors as time goes by////////////
-                    if(value === moment().format("h a")){
-                    textCol.addClass("grey")
-                // }else if (value < moment().format("h a")){
-                //     textCol.addClass("red")
-                }else if (value > moment().format("h a")){
-                    textCol.addClass("green")
-                }
+                    // change colors as time goes by - NOT WORKING PROPERLY////////////
+                    console.log( value)
+                    console.log( moment().format("H"))
+                    if (value === moment().format("H")) {
+                        textCol.addClass("grey")
+                        }else if (value < moment().format("H")){
+                            textCol.addClass("red")
+                    } else if (value > moment().format("H")) {
+                        textCol.addClass("green")
+                    }
 
-// ///////////////////////////////////////////////////////////////////////////////
+                   
+
+                    // ///////////////////////////////////////////////////////////////////////////////
                     textCol.append(txtarea);
 
                     var saveCol = $("<div>");
@@ -136,14 +120,14 @@
                 });
             }
 
-                 var saveItem = function (timeSlot) {
-      // TODO: Get the textarea value for whatever timeslot is being saved
+            var saveItem = function (timeSlot) {
+                // TODO: Get the textarea value for whatever timeslot is being saved
                 console.log(timeSlot);
                 var savetext = document.getElementById(timeSlot).value;
                 console.log(savetext);
                 localStorage.setItem(timeSlot, JSON.stringify(savetext));
                 console.log(localStorage);
-                
+
             }
 
             $("#calendar").on("click", ".save-item", function (e) {
@@ -152,9 +136,9 @@
                 saveItem($(this).attr("data-time"));
 
             });
-            
+
             buildCalendar();
-            
+
         });
 
 
