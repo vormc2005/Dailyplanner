@@ -4,4 +4,4 @@ This daily planner represents a simple calendar application. The application has
 3. Whennever user hits refresh, saved notes should show in corresponding textfield.
 4. As time goes by any timeslots that have already past will show in red color, while any text areas with future timeslots would show in green.
 
-
+![]()
